@@ -23,7 +23,7 @@ export default async (input: string) => {
 			})
 
 		let isPossible = true
-		const amounts: Record<string, number[]> = {
+		const amounts: Record<'red' | 'green' | 'blue', number[]> = {
 			red: [],
 			green: [],
 			blue: [],
@@ -35,10 +35,10 @@ export default async (input: string) => {
 			})
 
 			for (const cube of cubes) {
-				const [countStr, color] = cube.split(' ')
+				const [countStr, color] = cube.split(' ') as [string, keyof typeof amounts]
 				const count = Number(countStr)
 
-				amounts[color.toLowerCase()]?.push(count)
+				amounts[color].push(count)
 
 				if (
 					color === 'blue' && count > MAX_NUM_BLUE_CUBES ||
