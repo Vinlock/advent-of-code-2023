@@ -1,3 +1,5 @@
+import isNumber from '../lib/isNumber'
+
 class Part {
 	public endPosition: number
 
@@ -47,10 +49,6 @@ class Part {
 
 export default async (input: string) => {
 	const lines = input.split('\n')
-
-	const isNumber = (num: number | string) => {
-		return !Number.isNaN(Number(num))
-	}
 
 	const parts: Part[] = []
 
